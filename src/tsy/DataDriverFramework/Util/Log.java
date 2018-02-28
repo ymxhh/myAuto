@@ -8,14 +8,14 @@ public class Log {
 	private static Logger Log = Logger.getLogger(Log.class.getName());
 
 	// 定义一个静态方法，可以打印自定义的某个测试用例开始执行的日志
-	public static void startTestCase(String sTestCaseName) {
+	public static void startTestcase(String testcaseName) {
 		Log.info("**************************************");
-		Log.info("*********" + sTestCaseName + "************");
+		Log.info("*********" + testcaseName + "************");
 	}
 
 	// 定义一个静态方法，可以打印自定义的某个测试用例结束执行测试用例的日志信息
-	public static void endTestCase(String sTestCaseName) {
-		Log.info("*********" + sTestCaseName + "************");
+	public static void endTestcase(String testcaseName) {
+		Log.info("---------" + testcaseName + "------------");
 		Log.info("---------------------------------------");
 	}
 

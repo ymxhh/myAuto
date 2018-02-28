@@ -11,6 +11,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import tsy.KeywordsFramework.Scripts.TestSuiteByExcel;
+
 public class ExcelUtil {
 
 	private static XSSFSheet ExcelWSheet;
@@ -22,10 +24,10 @@ public class ExcelUtil {
 	 * 设定要操作的Excel的文件路径和Excel文件中的Sheet名称
 	 * @param path
 	 */
-	public static void setExcelFile(String path) {
+	public static void setExcelFile(String excelFilePath) {
 		FileInputStream ExcelFile;
 		try {
-			ExcelFile = new FileInputStream(path);
+			ExcelFile = new FileInputStream(excelFilePath);
 			ExcelWBook = new XSSFWorkbook(ExcelFile);
 		} catch (Exception e) {
 			System.out.println("set excel path fail...");
@@ -73,10 +75,10 @@ public class ExcelUtil {
 	 * @param rowNum
 	 * @param colNum
 	 * @param result
-	 * @param execlPath
+	 * @param excelFilePath
 	 * @throws IOException
 	 */
-	public static void setCellData(String sheetName, int rowNum, int colNum, String result, String execlPath) throws IOException {
+	public static void setCellData(String sheetName, int rowNum, int colNum, String result, String excelFilePath) throws IOException {
 		ExcelWSheet = ExcelWBook.getSheet(sheetName);
 		
 		try {
@@ -89,7 +91,7 @@ public class ExcelUtil {
 				Cell.setCellValue(result);
 			}
 			
-			FileOutputStream fileout = new FileOutputStream(execlPath);
+			FileOutputStream fileout = new FileOutputStream(excelFilePath);
 			ExcelWBook.write(fileout);
 			fileout.flush();
 			fileout.close();
@@ -100,8 +102,48 @@ public class ExcelUtil {
 		
 	}
 	
+	/**
+	 * 在sheetTestStep中找到某个测试用例的第一行
+	 * @param sheetName
+	 * @param testcaseName
+	 * @param colNum testcaseName的列号
+	 * @return
+	 */
+	public static int getFirstRowContainsTestcaseName(String sheetName, String testcaseName, int colNum) {
+		int i;
+		try {
+			ExcelWSheet = ExcelWBook.getSheet(sheetName);
+			int rowCount = ExcelUtil.getLastRowNum(sheetName);
+			for (i = 0; i < rowCount; i++) {
+				if (ExcelUtil.getCellData(sheetName, i, colNum).equalsIgnoreCase(testcaseName)) {
+					break;
+				}
+			}
+			return i;
+		} catch (Exception e) {
+			TestSuiteByExcel.testResult = false;
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
-	
+	public static int getLastRowContainsTestcaseName(String sheetName, String testcaseName, int colNum, int firstRowTesecase) {
+		int i;
+		try {
+			ExcelWSheet = ExcelWBook.getSheet(sheetName);
+			int rowCount = ExcelUtil.getLastRowNum(sheetName);
+			for (i = firstRowTesecase; i < rowCount; i++) {
+				if (!ExcelUtil.getCellData(sheetName, i, colNum).equalsIgnoreCase(testcaseName)) {
+					break;
+				}
+			}
+			return i;
+		} catch (Exception e) {
+			TestSuiteByExcel.testResult = false;
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	
 	
 	
