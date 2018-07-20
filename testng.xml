@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- 
+命令行运行：java org.testng.TestNG testng1.xml
+ -->
+
+<!-- 
+<suite>元素是testng.xml文件的根元素 
+<suite>可以包含多个<test>元素，一个<test>就定义了一个测试用例（其中可能包含多个测试方法）
+-->
+
+<suite name="suite1" verbose="1">
+
+	<!-- 
+		include 包含
+		exclude 排除
+	 -->
+	<!-- <groups>
+		<run>
+			<include name="A" />
+			<exclude name="B" />
+		</run>
+	</groups> -->
+
+	<test name="test01">
+		<classes>
+			<class name="tsy.DataDriverFramework.Scripts.testDemo1"></class>			
+		</classes>		
+	</test>
+	
+	<test name="test02">
+		<classes>
+			<class name="tsy.DataDriverFramework.Scripts.testDemo2"></class>
+		</classes>
+	</test>
+
+<!-- 	<packages>
+		<package name="tsy.DataDriverFramework.Scripts"></package>
+	</packages> -->
+
+</suite>
+	<!-- 
+	<test>元素是<suite>的子元素，用以定义一个测试用例
+	定义测试用例可以通过<classes>或<packages>
+	 -->
+	<!-- <test name="test01"> -->
+		<!-- <classes>表示以测试类的方式定义测试用例，粒度较小 -->
+		<!-- <classes>
+			<class name="c" />
+			<class name="tsy.DataDriverFramework.Scripts.Login"> -->
+				<!-- 设置测试方法 -->
+				<!-- <methods>
+					<include name="" />
+				</methods>
+			</class>
+		</classes> -->
+		
+		<!-- 
+		<packages>表示以测试类所在的包的方式定义测试用例，包中的所有测试类都被涉及，粒度较大
+		 -->
+		 <!-- <packages>
+		 	<package name="tsy.DataDriverFramework.Scripts" />
+		 </packages>
+	</test>
+</suite> -->

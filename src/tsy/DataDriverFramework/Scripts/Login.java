@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class Login {
 
-	public WebDriver driver;
+	/*public WebDriver driver;
 	
 	@BeforeClass
 	public void beforeclass() {
@@ -26,10 +26,11 @@ public class Login {
 	@AfterMethod
 	public void aftermethod() {
 		driver.quit();
-	}
+	}*/
 	
 	@Test
 	public void login_normal() {
 		
 	}
+	
 }
