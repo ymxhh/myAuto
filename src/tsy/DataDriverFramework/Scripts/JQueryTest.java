@@ -79,16 +79,7 @@ public class JQueryTest {
 						+ "newScript.type = 'text/javascript';" + "newScript.src = "
 						+ "'http://ajax.googleapis.com/ajax/"
 						+ "libs/jquery/1.7.2/jquery.min.js';"
-						+ "headID.appendChild(newScript);");
-						
-	
-	
-	
-	
-	
-	
-	
-	
+						+ "headID.appendChild(newScript);");	
 	
 	}
 }

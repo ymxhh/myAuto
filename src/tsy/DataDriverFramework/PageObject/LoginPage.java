@@ -51,6 +51,7 @@ public class LoginPage {
 	 */
 	public WebElement accountLogin() throws Exception {
 		element = driver.findElement(mapelement.getLocator("TSY.LoginPage.accountLogin"));
+//		element = driver.findElement(mapelement.getLocator("class>.right"));
 		return element;
 	}
 	
